@@ -32,4 +32,18 @@ class Apiservices {
       return responseall;
     }
   }
+
+  static Future<NewsResponse?> getsearch({required String search}) async {
+    final url = Uri.parse(
+      'https://newsapi.org/v2/top-headlines?q=$search&apiKey=00d6296a177f4b7ea226e7cd08f5d679',
+    );
+    final response = await http.get(url);
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      final Map<String, dynamic> jsondata = jsonDecode(response.body);
+
+      NewsResponse responseall = NewsResponse.fromJson(jsondata);
+
+      return responseall;
+    }
+  }
 }

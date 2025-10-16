@@ -14,6 +14,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  TextEditingController searchcontroler = TextEditingController();
   List categories = [
     'Business',
     'Entertainment',
@@ -55,6 +56,44 @@ class _HomescreenState extends State<Homescreen> {
           child: Column(
             spacing: 10,
             children: [
+              Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.blue,
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: TextField(
+                      controller: searchcontroler,
+                      onChanged: (value) async {
+                        await context.read<Newses>().getsearch(
+                          search: searchcontroler.text,
+                        );
+                      },
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+
+                        hintText: 'Search',
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            context.read<Newses>().getsearch(
+                              search: searchcontroler.text,
+                            );
+                          },
+                          icon: Icon(Icons.search),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

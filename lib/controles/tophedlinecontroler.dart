@@ -26,4 +26,14 @@ class Newses with ChangeNotifier {
     isloading = false;
     notifyListeners();
   }
+
+  Future<void> getsearch({required String search}) async {
+    isloading = true;
+    notifyListeners();
+    final newses = await Apiservices.getsearch(search: search);
+    tophedline = newses!.articles ?? [];
+
+    isloading = false;
+    notifyListeners();
+  }
 }
