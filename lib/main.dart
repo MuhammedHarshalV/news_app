@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/controles/tophedlinecontroler.dart';
-import 'package:news_app/views/bottomnav/homescreen.dart';
+import 'package:news_app/views/homescreen.dart';
 import 'package:provider/provider.dart';
 
 void main() {

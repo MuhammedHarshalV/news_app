@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:news_app/models/Allnews.dart';
@@ -17,6 +16,7 @@ class Apiservices {
 
       return responseall;
     }
+    return null;
   }
 
   static Future<NewsResponse?> getcategory({required String category}) async {
@@ -31,6 +31,7 @@ class Apiservices {
 
       return responseall;
     }
+    return null;
   }
 
   static Future<NewsResponse?> getsearch({required String search}) async {
@@ -45,5 +46,6 @@ class Apiservices {
 
       return responseall;
     }
+    return null;
   }
 }
